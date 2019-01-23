@@ -189,4 +189,4 @@ async def warn_error(error, ctx):
 		text = "Sorry {}, You don't have requirement permission to use this command `kick_members`.".format(ctx.message.author.mention)
 		await bot.send_message(ctx.message.channel, text)
 
-client.run(os.environ['BOT_TOKEN'])
+bot.run(os.environ['BOT_TOKEN'])
