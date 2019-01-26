@@ -17,7 +17,6 @@ async def on_member_join(member):
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name='test'))
     print('Ready, Freddy')
 
 @bot.event
@@ -71,7 +70,6 @@ async def _mute(ctx, user: discord.Member = None, *, arg = None):
 	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
 	await bot.say(embed=embed)
 	
-
 @_mute.error
 async def mute_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
@@ -99,7 +97,6 @@ async def _unmute(ctx, user: discord.Member = None, *, arg = None):
 	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
 	await bot.say(embed=embed)
 	
-
 @_unmute.error
 async def unmute_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
@@ -126,7 +123,6 @@ async def _kick(ctx, user: discord.Member = None, *, arg = None):
 	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
 	await bot.say(embed=embed)
 	
-
 @_kick.error
 async def kick_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
@@ -153,7 +149,6 @@ async def _ban(ctx, user: discord.Member = None, *, arg = None):
 	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
 	await bot.say(embed=embed)
 	
-
 @_ban.error
 async def ban_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
@@ -182,7 +177,6 @@ async def _warn(ctx, user: discord.Member = None, *, arg = None):
 	await bot.send_message(user, "You have been warned for: {}".format(reason))
 	await bot.send_message(user, "from: {} server".format(server))
 	
-
 @_warn.error
 async def warn_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
