@@ -11,43 +11,44 @@ bot = commands.Bot(command_prefix = '-')
 
 @bot.event
 async def on_member_join(member):
-    print('Recognised that a member called ' + member.name + ' joined')
-    await bot.send_message(member, "Welcome to **Christian's Relaxation Server! Here you can listen to music, chat with friends, make new friends, and so much more!")
-    print('Sent message to ' + member.name)
+	print('Recognised that a member called ' + member.name + ' joined')
+	await bot.send_message(member, "Welcome to **Christian's Relaxation Server! Here you can listen to music, chat with friends, make new friends, and so much more!")
+	print('Sent message to ' + member.name)
 
 @bot.event
 async def on_ready():
-    print('Ready, Freddy')
+	await bot.change_presence(game=discord.Game(name="test"))
+	print('Ready, Freddy')
 
 @bot.event
 async def on_message(message):
-    if message.content == '-relax':
-        await bot.send_message(message.channel, 'Sit back, take three deep breaths. In.......count to five....out....count to five. Do that ten times, lay back, and take a nap!')
-    if message.content == '-asmr':
-        await bot.send_message(message.channel, 'https://www.youtube.com/channel/UClqNSqnWeOOUVkzcJFj4rBw')
-    if message.content == '-help':
-        await bot.send_message(message.channel, '@ChristianBeneventi#0001 Contact him or another staff member!')
-    if message.content == '-nou':
-        await bot.send_message(message.channel, '-yesu')
-    if message.content == '-whoami':
-        await bot.send_message(message.channel, "A person. Are you dumb or somethin'?")
-    if message.content == '-no':
-        await bot.send_message(message.channel,'yes')
-    if message.content == '-yes':
-        await bot.send_message(message.channel,'no')
-    if message.content == '-stop':
-        await bot.send_message(message.channel,'go')
-    if message.content == '-ping':
-        await bot.send_message(message.channel,'pong')
-    if message.content == '-die':
-        await bot.send_message(message.channel,'why')
-    if message.content == '-commands':
-        await bot.send_message(message.channel,'```-commands, -relax, -asmr, -no, -yes, -nou, -help, -ping, -stop, -die, -troomp, -duck, -saloot, -hungry, -haylp, -ping, ')
-    if message.content == '-troomp':
-        em = discord.Embed(description='make merica grate egein')
-        em.set_image(url='https://i.pinimg.com/736x/d6/3b/3e/d63b3e3087092152d34672504b4f3b7c.jpg')
-        await bot.send_message(message.channel, embed=em)
-    await bot.process_commands(message)
+	if message.content == '-relax':
+		await bot.send_message(message.channel, 'Sit back, take three deep breaths. In.......count to five....out....count to five. Do that ten times, lay back, and take a nap!')
+	if message.content == '-asmr':
+		await bot.send_message(message.channel, 'https://www.youtube.com/channel/UClqNSqnWeOOUVkzcJFj4rBw')
+	if message.content == '-help':
+		await bot.send_message(message.channel, '@ChristianBeneventi#0001 Contact him or another staff member!')
+	if message.content == '-nou':
+		await bot.send_message(message.channel, '-yesu')
+	if message.content == '-whoami':
+		await bot.send_message(message.channel, "A person. Are you dumb or somethin'?")
+	if message.content == '-no':
+		await bot.send_message(message.channel,'yes')
+	if message.content == '-yes':
+		await bot.send_message(message.channel,'no')
+	if message.content == '-stop':
+		await bot.send_message(message.channel,'go')
+	if message.content == '-ping':
+		await bot.send_message(message.channel,'pong')
+	if message.content == '-die':
+		await bot.send_message(message.channel,'why')
+	if message.content == '-commands':
+		await bot.send_message(message.channel,'```-commands, -relax, -asmr, -no, -yes, -nou, -help, -ping, -stop, -die, -troomp, -duck, -saloot, -hungry, -haylp, -ping, ')
+	if message.content == '-troomp':
+		em = discord.Embed(description='make merica grate egein')
+		em.set_image(url='https://i.pinimg.com/736x/d6/3b/3e/d63b3e3087092152d34672504b4f3b7c.jpg')
+		await bot.send_message(message.channel, embed=em)
+	await bot.process_commands(message)
     
 @bot.command(name="mute", pass_context=True)
 @commands.has_permissions(kick_members=True, administrator=True)
