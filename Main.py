@@ -183,5 +183,12 @@ async def warn_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
 		text = "Sorry {}, You don't have requirement permission to use this command `kick_members`.".format(ctx.message.author.mention)
 		await bot.send_message(ctx.message.channel, text)
+		
+@bot.command()
+@commands.check(user_is_me)
+async def servers():
+    for server in bot.servers:
+        embed = discord.Embed(description="Server Name: {}, Server ID: {}".format(server.name, server.id))
+        await bot.say(embed=embed)
 
 bot.run(os.environ['BOT_TOKEN'])
