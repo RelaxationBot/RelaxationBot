@@ -185,7 +185,6 @@ async def warn_error(error, ctx):
 		await bot.send_message(ctx.message.channel, text)
 		
 @bot.command()
-@commands.check(user_is_me)
 async def servers():
     for server in bot.servers:
         embed = discord.Embed(description="Server Name: {}, Server ID: {}".format(server.name, server.id))
