@@ -67,25 +67,10 @@ async def unmute_error(error, ctx):
 		text = "Sorry {}, You don't have requirement permission to use this command `kick_members`.".format(ctx.message.author.mention)
 		await ctx.channel_send(ctx.message.channel, text)
 
-@bot.command(name="kick")
+@bot.command()
 @commands.has_permissions(kick_members=True)
-async def _kick(ctx, user: discord.Member = None, *, arg = None):
-	if user is None:
-		await ctx.send("please provide a member")
-		return False
-	if arg is None:
-		await ctx.send("please provide a reason to {}".format(user.name))
-		return False
-	if user.server_permissions.kick_members:
-		return False
-	reason = arg
-	author = ctx.message.author
-	await user.kick(arg=reason)
-	embed = discord.Embed(title="Kick", description=" ", color=0x00ff00)
-	embed.add_field(name="User: ", value="<@{}>".format(user.id), inline=False)
-	embed.add_field(name="Moderator: ", value="{}".format(author.mention), inline=False)
-	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
-	await ctx.send(embed=embed)
+async def kick(ctx, user: discord.Member = None, *, reason = None):
+	await user.kick(reason=reason)
 	
 @_kick.error
 async def kick_error(error, ctx):
@@ -93,25 +78,10 @@ async def kick_error(error, ctx):
 		text = "Sorry {}, You don't have requirement permission to use this command `kick_members`.".format(ctx.message.author.mention)
 		await ctx.channel_send(ctx.message.channel, text)
   
-@bot.command(name="ban")
+@bot.command()
 @commands.has_permissions(ban_members=True)
-async def _ban(ctx, user: discord.Member = None, *, arg = None):
-	if user is None:
-		await ctx.send("please provide a member")
-		return False
-	if arg is None:
-		await ctx.send("please provide a reason to {}".format(user.name))
-		return False
-	if user.server_permissions.ban_members:
-		return False
-	reason = arg
-	author = ctx.message.author
-	await user.ban(arg=reason)
-	embed = discord.Embed(title="Ban", description=" ", color=0xFF0000)
-	embed.add_field(name="User: ", value="<@{}>".format(user.id), inline=False)
-	embed.add_field(name="Moderator: ", value="{}".format(author.mention), inline=False)
-	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
-	await ctx.send(embed=embed)
+async def ban(ctx, user: discord.Member = None, *, reason = None):
+	await user.kick(reason=reason)
 	
 @_ban.error
 async def ban_error(error, ctx):
