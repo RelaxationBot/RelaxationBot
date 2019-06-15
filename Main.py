@@ -71,23 +71,11 @@ async def unmute_error(error, ctx):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member = None, *, reason = None):
 	await user.kick(reason=reason)
-	
-@_kick.error
-async def kick_error(error, ctx):
-	if isinstance(error, discord.ext.commands.errors.CheckFailure):
-		text = "Sorry {}, You don't have requirement permission to use this command `kick_members`.".format(ctx.message.author.mention)
-		await ctx.channel_send(ctx.message.channel, text)
   
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user: discord.Member = None, *, reason = None):
-	await user.kick(reason=reason)
-	
-@_ban.error
-async def ban_error(error, ctx):
-	if isinstance(error, discord.ext.commands.errors.CheckFailure):
-		text = "Sorry {}, You don't have requirement permission to use this command `ban_members`.".format(ctx.message.author.mention)
-		await ctx.channel_send(ctx.message.channel, text)
+	await user.ban(reason=reason)
 		
 @bot.command()
 async def servers(ctx):
