@@ -88,7 +88,7 @@ async def ban(ctx, user: discord.Member = None, *, reason = None):
 	embed = discord.Embed(title="Ban", description=" ", color=0xFF0000)
 	embed.add_field(name="User: ", value="<@{}>".format(user.id), inline=False)
 	embed.add_field(name="Moderator: ", value="{}".format(author.mention), inline=False)
-	embed.add_field(name="Reason: ", value="{}\n".format(arg), inline=False)
+	embed.add_field(name="Reason: ", value="{}\n".format(reason), inline=False)
 	await ctx.send(embed=embed)
 
 bot.run(os.environ['BOT_TOKEN'])
