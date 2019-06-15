@@ -71,16 +71,12 @@ async def unmute_error(error, ctx):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member = None, *, reason = None):
 	await user.kick(reason=reason)
+	await ctx.send(f"{user.name} has been kicked reason: {reason}")
   
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user: discord.Member = None, *, reason = None):
 	await user.ban(reason=reason)
-		
-@bot.command()
-async def servers(ctx):
-    for server in bot.servers:
-        embed = discord.Embed(description="Server Name: {}, Server ID: {}".format(server.name, server.id))
-        await ctx.send(embed=embed)
+	await ctx.send(f"{user.name} has been banned reason: {reason}")
 
 bot.run(os.environ['BOT_TOKEN'])
