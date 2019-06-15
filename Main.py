@@ -70,6 +70,7 @@ async def unmute_error(error, ctx):
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member = None, *, reason = None):
+	author = ctx.author
 	await user.kick(reason=reason)
 	await ctx.send(f"{user.name} has been kicked reason: {reason}")
 	embed = discord.Embed(title="Kick", description=" ", color=0xFFA500)
@@ -81,6 +82,7 @@ async def kick(ctx, user: discord.Member = None, *, reason = None):
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user: discord.Member = None, *, reason = None):
+	author = ctx.author
 	await user.ban(reason=reason)
 	await ctx.send(f"{user.name} has been banned reason: {reason}")
 	embed = discord.Embed(title="Ban", description=" ", color=0xFF0000)
