@@ -11,7 +11,6 @@ bot = commands.Bot(command_prefix = '.')
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(game=discord.Game(name="test"))
 	print('Ready, Freddy')
     
 @bot.command(name="mute")
